@@ -1,7 +1,3 @@
-### FSI
-## L10G03: CVE-2019-11419
-
-
 # Trabalho realizado na Semana #3
 
 ## Identification
@@ -33,7 +29,7 @@ This DoS bug was reported to Tencent, but they decided not to fix because it’s
 
 
 Vulnerability Type: Denial of Service
-    Attack Type: Local
+Attack Type: Local
     
 There are some preconditions to exploit this weakness:
         - The user must have received or sent a gif file;
