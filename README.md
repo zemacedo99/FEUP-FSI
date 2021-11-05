@@ -1,9 +1,8 @@
-
 Breve descrição do grupo
 
 * Turno: [LM]XX
-* Grupo: YY
+* Grupo: L10G03
 * Alunos:
-    - Aluno1 upZZZZZ 
-    - Aluno2 upZZZZZ
-    - Aluno3 upZZZZZ
+    - Diogo Barbeitos Alves Torres Gomes up201505676
+    - José António Dantas Macedo upZZZZZ
+    - Mário Pedro Soares Pinto Mota Ferreira upZZZZZ
