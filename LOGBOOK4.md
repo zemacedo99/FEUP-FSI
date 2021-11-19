@@ -42,4 +42,7 @@
 - 
 
 ### Task 6
-- 
+- With the command ``export PATH=/home/ourCommands:$PATH`` we can add the directory /home/ourCommands to the
+beginning of the PATH environment variable.
+- After this, we can create a executable file ls (gcc ls.c -o ls) in this directory, where ls.c instead of list the content of the current directory can do wath we want, int this case, just print "Hello World".
+- Every time ls is executed in this directory, it will not do his proper function but whatever we defined in the executable ls.
