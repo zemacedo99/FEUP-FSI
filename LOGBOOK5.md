@@ -12,4 +12,4 @@
 ## SeedLab
 
 ### Task 1 
-- 
+- With the command **sudo sysctl -w kernel.randomize_va_space=0** we start by disable the address space randomization that randomizes the starting address of heap and stack.
