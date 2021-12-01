@@ -27,9 +27,10 @@
 - When we run ``make``, it compiles with the option ``execstack``, which allows code to be executed from the stack. Without this option, the program will not run our shellcode and result in a ``Segmentation fault``.
 
 ### Task 2
-- The program from this second task uses the function ``strcpy``, which copies the string pointed to by the second argument to the first argument, without checking if the destination varible can store all the content from the origin. Just by looking at the source code, we can see that we are reading 517 bytes from the ``badfile`` into the ``str`` variable and that in the function ``bof`` we are copying the content from the ``str`` variable of size 517 into a ``buffer`` of size 100. This represents a vulnerability in the program.
+- The program from this second task uses the function ``strcpy``, which copies the string pointed to by the second argument to the first argument, without checking if the destination varible can store all the content from the origin. Just by looking at the source code, we can see that we are reading 517 bytes from the ``badfile`` into the ``str`` variable and that in the function ``bof`` we are copying the content from the ``str`` variable of size 517 into a ``buffer`` of size 100. This represents a vulnerability in the program as one can craft a "badfile" and rewrite certain parts of the memory.
 
 ### Task 3 
--
+- We started by creating an empty "badfile" and compiling the program from task 2 with the appropriate options.
+- We used ``gdb`` to debug our "stack-L1-dbg"
 
 
