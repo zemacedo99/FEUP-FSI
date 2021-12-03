@@ -39,15 +39,15 @@
 
 - 
 
-### Task 3.A
+### Task 3
 
-- We use the programa ``build string.py`` to create a badfile with the data we want to serve as input to the server nc 10.9.0.5 9090 as we did before.
+- We use the programa ``build string.py`` to create a badfile with the data we want to serve as input to the server nc 10.9.0.5 9090 as we did before, this time being the porpose modifying the value of the target variable address.
 
-- This time we replace string.py variable number for the target variable address, because secret message's address is not the one we want to consider now.
+- We start by replacing string.py variable number for the target variable address, because secret message's address is not the one we want to consider now.
+
+- Tha target variable address will appear at the same position as the secret message address, since we replace number, so its still valid to use ``s = "%.8x-"*64"`` to print the address, at the position 64.
 
 - This way we can change ``s = "%.8x-"*63 + "%n-" + "\n"``, successfully changing the target variable to a different value as asked in task 3.A. 
-
-### Task 3.B
 
 - In task 3.B it's asked to change the value to any value. In this task we must change the variable to a given value, 0x5000.
 
