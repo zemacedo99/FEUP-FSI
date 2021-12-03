@@ -33,7 +33,9 @@
 
 ### Task 2
 
--
+- To find out how many %x format specifiers we need so we can get the server program to print out the first four bytes of your input, we started by using the ``build string.py`` to create a badfile with the data we want.
+
+- We change de number variable to 0xaaaaaaaa and printed the first 100 addresses using ``s = "%.8x-"*100``. By reducing time from 100 to 80, and then from 80 to 65, it was evident that we needed to print 63 %x in order to print the first four bytes of our input. 
 
 - 
 
