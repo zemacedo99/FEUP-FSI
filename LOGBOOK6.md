@@ -45,7 +45,7 @@
 
 ### Task 3
 
-- We use the programa ``build string.py`` to create a badfile with the data we want to serve as input to the server nc 10.9.0.5 9090 as we did before, this time being the porpose of the task 3.A modifying the value of the target variable address.
+- We use the program ``build string.py`` to create a badfile with the data we want to serve as input to the server nc 10.9.0.5 9090 as we did before, this time being the porpose of the task 3.A modifying the value of the target variable address.
 
 - We start by replacing string.py variable number for the target variable address, because secret message's address is not the one we want to consider now.
 
