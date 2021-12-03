@@ -31,3 +31,11 @@
 
 - When the task is completed, we use the command ``docker-compose down`` to shut down the container.
 
+### Task 2
+
+- 
+
+### Task 3
+
+- 
+
