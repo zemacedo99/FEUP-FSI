@@ -55,5 +55,5 @@
 
 - In task 3.A it's asked to change the value to any value. In the task 3.B we must change the variable to a given value, 0x5000.
 
-- 
+- We can add "%.19914x" to our 63 address in order to change the value of the 64 position, writing in this way ``s = "%.8x-"*62 + "%.19914x" + "%n" + "\n"``. We reached the number 19914 by try and error.
 
