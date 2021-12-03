@@ -35,13 +35,13 @@
 
 - To find out how many %x format specifiers we need so we can get the server program to print out the first four bytes of your input and complete task 2.A, we started by using the file ``build string.py`` to create a badfile with the data we want.
 
-- We change de number variable to 0xaaaaaaaa so that way it's eady to locate and printed the first 100 addresses using ``s = "%.8x-"*100``. By reducing the size from 100 to 80, and then from 80 to 65, it was evident that we needed to print 63 %x in order to print the first four bytes of our input. 
+- We change de number variable to 0xaaaaaaaa so that way it's easy to locate and printed the first 100 addresses using ``s = "%.8x-"*100``. By reducing the size from 100 to 80, and then from 80 to 65, it was evident that we needed to print 63 %x in order to print the first four bytes of our input. 
 
-- Task 2.B asks to find a secret message (a string) stored in the heap area. Since we already now The secret message's address:  0x080b4008, and we find out in the previous task where how many %x we need to print the value of our input, we just need to make a change in the way we print it, because instead of expecting an address in the binary form, we are expecting in the format of a string.
+- Task 2.B asks to find a secret message (a string) stored in the heap area. Since we already know The secret message's address:  0x080b4008, and we find out in the previous task how many %x we need to print the value of our input, we just need to make a change in the way we print it, because instead of expecting an address in the binary form, we are expecting in the format of a string.
 
 - First we copy the address given of the secret message and put it in the variable number on the file ``build string.py``.
 
-- Next, we use `` s = "%.8x-"*63 + "%s" `` to print the address of the secret message in the format of a string, that is "A secret message".
+- Next, we use `` s = "%.8x-"*63 + "%s" `` to print the address of the secret message in the format of a string. We obtain the follow string "A secret message".
 
 ### Task 3
 
