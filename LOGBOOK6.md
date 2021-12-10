@@ -6,13 +6,24 @@
 - Exploring a format-string vulnerability attack, retrieve the flag located in the file flag.txt.
 
 ### Challenge 1
-- We start to send radom format specifiers like %x to the program to watch what it will be printed. We realize when we send something like "AAAA%x.%x.%x" we will print "AAAA414141", 41 is the Hexadecimal of the ASCII Character A. So that means that if we send a position of the memory with the right format specifier right after, we can see what is in that variable.
+- We started by sending random format specifiers like %x to the program to watch what was be printed. We realized that when we sent something like "AAAA%x.%x.%x", it would print "AAAA414141", 41 being the Hexadecimal of the ASCII Character A. So that means that if we send a position of the memory with the right format specifier right after, we can see what is in that variable.
 
-- After we use gdb to try to find the variable here the flag is stored. We use ```p &flag``` and got the memory address 0x804c060.
+- We then used gdb to try and find the address of the global variable where the flag was stored. We used ```p &flag``` and got the memory address 0x804c060.
 
-- We send the little endian memory address ```x60\xc0\x04\x08``` and ```%s``` after, and we print the flag stored in that memory address.
+- Finally, we sent the little endian memory address ```x60\xc0\x04\x08``` followed by ```%s```, which printed the flag stored in that memory address.
 
 ### Challenge 2
+- We started by running the ```checksec``` command and inspecting the program source code to find vulnerabilities.
+
+- We noticed that we could probably use a formated string to write to memory. We also realized that we only needed to change the value of a variable to be able to run a shell.
+
+- We followed the same steps as in the first Challenge, using gdb to find the adress of the ```key``` variable and using a similar formated string to print what was in the stack. 
+
+- We knew that we needed to use the address we had found out and ```%n``` to change the ```key``` variable. First, we tried a different formated string, "AAAA\x34\xc0\x04\x08%x.%x.%x.%x...", to find out were the A's and the variable address were being stored. This version of the string allowed us to choose an arbitrary number of characters to be printed just by changing the first ```%x``` to ```%100.x``` (or any other value besides 100), and modifying the second ```%x``` to ```%n``` would write to the memory address in the string the number of printed characters up until that moment.
+
+- We converted the wanted value ```0xbeef``` to a base 10 value, 48879. This was the value of characters that had to be printed before the ```%n```. By analysing the previous outputs, we found that "AAAA\x34\xc0\x04\x08%48871.x%n" would be the formated string that would change the value of the variable ```key``` to ```0xbeef```, which lauched a shell.
+
+- In the end, after lauching the shell, using commands to search the directories we found and printed the flag.
 
 
 ## SeedLab
