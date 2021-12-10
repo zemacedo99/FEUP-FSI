@@ -6,11 +6,11 @@
 - Exploring a format-string vulnerability attack, retrieve the flag located in the file flag.txt.
 
 ### Challenge 1
-- We start to send radom format specifiers like %x to the program to watch what it will be printed. We realize when we send something like "AAAA%x.%x.%x" we will print "AAAA414141", 41 is the Hexadecimal of the ASCII Character A. So that means that if we send a position of the memory with the right format specifier after, we can see what is in that variable.
+- We start to send radom format specifiers like %x to the program to watch what it will be printed. We realize when we send something like "AAAA%x.%x.%x" we will print "AAAA414141", 41 is the Hexadecimal of the ASCII Character A. So that means that if we send a position of the memory with the right format specifier right after, we can see what is in that variable.
 
 - After we use gdb to try to find the variable here the flag is stored. We use ```p &flag``` and got the memory address 0x804c060.
 
-- We send the memory address like ```x60\xc0\x04\x08``` and ```%s``` after, and we print the flag stored in that memory address.
+- We send the little endian memory address ```x60\xc0\x04\x08``` and ```%s``` after, and we print the flag stored in that memory address.
 
 ### Challenge 2
 
