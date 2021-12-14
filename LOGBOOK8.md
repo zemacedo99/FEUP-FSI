@@ -29,9 +29,12 @@ database for the web application.
 
 - After analysing the query $sql, more specifically the part `` WHERE name= ’$input_uname’ and Password=’$hashed_pwd’ ``, we managed to find a way for the part ``and Password=’$hashed_pwd’`` not be evalueted, because we don't know the password.
 
-- We want to login as admin. So our input for username will start with ``admin``. Then we want to terminate the evaluation of "name", do we add `` ' `` after admin and terminate the query with ``;``. This way we are with ``admin';``
+- We want to login as admin. So our input for username will start with ``admin``. Then we want to terminate the evaluation of "name", so we add `` ' `` after admin and terminate the query with ``;``. This way we are with ``admin';``
 
-- Since ``--`` is how we comment a line in SQL we just add after and this way we ignore to check the password. This is the final result of our input for username ``admin' -- ``. Password input should go empty. 
+- Since ``--`` is how we comment a line in SQL we just add after and this way we ignore to check the password. This is the final result of our input for username ``admin' -- ``. Password input can be empty or not, it does not make a difference. 
+
+- ``curl www.seed-server.com/unsafe_home.php?'username=admin%27;%20--%20&Password=1'``
+
 
 ### Task 3
 
