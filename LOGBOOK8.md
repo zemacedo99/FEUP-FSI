@@ -31,7 +31,7 @@ database for the web application.
 
 - We want to login as admin. So our input for username will start with ``admin``. Then we want to terminate the evaluation of "name", so we add `` ' `` after admin and terminate the query with ``;``. This way we are with ``admin';``
 
-- Since ``--`` is how we comment a line in SQL we just add after and this way we ignore to check the password. This is the final result of our input for username ``admin' -- ``. Password input can be empty or not, it does not make a difference. 
+- Since ``--`` is how we comment a line in SQL we just add after and this way we ignore to check the password. This is the final result of our input for username ``admin'; -- ``. Password input can be empty or not, it does not make a difference. 
 
 - To complete task 2.2 we use the command ``curl www.seed-server.com/unsafe_home.php?'username=admin%27;%20--%20&Password=1'``. We needed to include special characters as single quote, %27, and white space, %20. This way is simple to understand that the input for username used in this command is the same as in the previous task.
 
