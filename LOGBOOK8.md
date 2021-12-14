@@ -27,7 +27,7 @@ database for the web application.
 
 ### Task 2
 
-- 
+- After examining 
 
 ### Task 3
 
