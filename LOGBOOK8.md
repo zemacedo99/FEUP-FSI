@@ -33,9 +33,9 @@ database for the web application.
 
 - Since ``--`` is how we comment a line in SQL we just add after and this way we ignore to check the password. This is the final result of our input for username ``admin'; -- ``. Password input can be empty or not, it does not make a difference. 
 
-- To complete task 2.2 we use the command ``curl www.seed-server.com/unsafe_home.php?'username=admin%27;%20--%20&Password=1'``. We needed to include special characters as single quote, %27, and white space, %20. This way is simple to understand that the input for username used in this command is the same as in the previous task.
+- To complete task 2.2 we use the command ``curl www.seed-server.com/unsafe_home.php?'username=admin%27;%20--%20&Password=1'``. We needed to include special characters as single quote, %27, and white space, %20. This way is simple to understand that the input for username used in this command is the same as in the previous task. The input for Password is irrelevant.
 
-- The countermeasure that prvents us from running two SQL statements in this attack is 
+- The countermeasure that prevents us from running two SQL statements in this attack is 
 
 ### Task 3
 
