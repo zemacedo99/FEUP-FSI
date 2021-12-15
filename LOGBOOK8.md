@@ -6,7 +6,7 @@
 - The objective of this CTF is to login using the admin user account in a web server in PHP. Challenge one gives access to the source code that is used by the server to interact with the database and challenge 2 is done from a black-box perspective.
 
 ### Challenge 1
-- 
+- After download the index.php file, ``$query = "SELECT username FROM user WHERE username = '".$username."' AND password = '".$password."'" ``;
 
 ### Challenge 2
 - 
