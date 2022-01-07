@@ -35,7 +35,7 @@ database for the web application.
 
 - To complete task 2.2 we use the command ``curl www.seed-server.com/unsafe_home.php?'username=admin%27;%20--%20&Password=1'``. We needed to include special characters as single quote, %27, and white space, %20. This way is simple to understand that the input for username used in this command is the same as in the previous task. The input for Password is irrelevant.
 
-- The countermeasure that prevents us from running two SQL statements in this attack is 
+- Trying to run two sql statements in the same query resulted in an error. This happens because the mysqli::query() API doesn’t allow multiple queries to run in the database server.
 
 ### Task 3
 
