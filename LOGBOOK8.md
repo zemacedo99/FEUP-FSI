@@ -39,4 +39,4 @@ database for the web application.
 
 ### Task 3
 
-- 
+- We login as Alice account like we did in task 2 and go to the edit profile ``Lice',salary='200001``
