@@ -40,3 +40,5 @@ database for the web application.
 ### Task 3
 
 - We login as Alice account like we did in task 2, next in the Edit Profile page we find a SQL injection vulnerability that happens to be an UPDATE statement, if we edit the nickname like ``Lice',salary='200001`` we can change the account salary. 
+
+- To modify the salary of the boss, Boby, while logged in as a common worker, in our case, Alice, we used the Edit Profile page and the following input ```', salary=1 where name='boby'#```. This effectively changes the salary of Boby and comments the rest of the query.
