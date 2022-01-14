@@ -64,7 +64,7 @@
 - Now any other user that visits Samy’s page, will add Samy as a friend.
 
 - Question 1:
-The Lines ➀ and ➁, are needed for getting the values of the __elgg_ts and __elgg_token parameters, beacuse they change every time a page is loaded so they need to be accessed dynamically in order to get the correct values.
+The Lines ➀ and ➁, are needed for getting the values of the __elgg_ts and __elgg_token parameters, because they change every time a page is loaded so they need to be accessed dynamically in order to get the correct values.
 - Question 2:
 If the Elgg application only provided the Editor mode for the ``About me`` field, the attack would not be successful because the The Editor mode adds extra HTML code to the text typed into the field and we do not want any extra code added to our script in order to work.
 
