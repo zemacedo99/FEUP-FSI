@@ -6,10 +6,22 @@
 - The objective of this CTF is to login using the admin user account in a web server in PHP. Challenge one gives access to the source code that is used by the server to interact with the database and challenge 2 is done from a black-box perspective.
 
 ### Challenge 1
-- After download the index.php file, ``$query = "SELECT username FROM user WHERE username = '".$username."' AND password = '".$password."'" ``;
+- After download the index.php file, we discovered  the query used to login: ``$query = "SELECT username FROM user WHERE username = '".$username."' AND password = '".$password."'" ``;
+
+- So now we understand that we can overcome the ``AND`` and only validate de username. As we know from the ctf description, we should login a admin.
+
+- This way we start the input for username with ``admin``. Then we want to terminate the evaluation of ".$username", so we add `` ' `` after admin and terminate the query with ``;``. This way we are with ``admin';``. Since ``--`` is how we comment a line in SQL we just add after and this way we ignore to check the password. This is the final result of our input for username ``admin'; -- ``.
+
+- This CTF is very similar to the task 2 of the SeedLab.
 
 ### Challenge 2
-- 
+- Without being authenticated we can observe the functionalities that are accessible. One of them allows us to ping addresses.
+
+- This can our way to attack so we started searching for vulnerabilities and found the documented one CVE-2017-14127.
+
+- After reading the vulnerability documentation we realized that it is possible to run shell commands through the existing input to ping addresses.
+
+- So starting the input with ``;``, we can use the command ``cat`` to read data from the file and give their content as output. The file name is flag.txt. The complete input is ``; cat /flag.txt`` and the flag is presented to us.
 
 
 ## SeedLab
