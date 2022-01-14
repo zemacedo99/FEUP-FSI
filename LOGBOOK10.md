@@ -23,7 +23,9 @@
 
 ### Task 2
 
-- 
+- If instead of the script ``<script>alert('XSS');</script>`` we use the script ``<script>alert(document.cookie);</script>`` we can now print the cookies.
+
+- The result of the alert is ``pvisitor=a6b4dccd-99d9-4a92-a50a-9a850b3592ab; Elgg=i0mr1o4tlhlimds4ncd0da5nb7``.
 
 ### Task 3
 
