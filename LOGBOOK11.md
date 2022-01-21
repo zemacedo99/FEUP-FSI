@@ -9,7 +9,7 @@ to make changes to this file, we make a copy it into our current directory, and 
 copy instead.
 - Next we uncomment the ``unique_subject`` line to allow creation of certifications with the same subject and create several sub-directories, ``index.txt`` and ``serial``.
 - For the ``index.txt`` file, we create an empty file. For the ``serial`` file, we put a single number in string format (e.g. 1000) in the file.
-- After the set up of the configuration file ``openssl.cnf`` we run the following command to generate the self-signed certificate for the CA: ``openssl req -x509 -newkey rsa:4096 -sha256 -days 3650 \ -keyout ca.key -out ca.crt``.
+- After the set up of the configuration file ``openssl.cnf`` we run the following command to generate the self-signed certificate for the CA: ``openssl req -x509 -newkey rsa:4096 -sha256 -days 3650 \-keyout ca.key -out ca.crt``.
 - Next we insert a password and the subject information.
 - The output of the command are stored in two files: ca.key and ca.crt. The file ca.key contains the CA’s private key, while ca.crt contains the public-key certificate.
 
@@ -174,7 +174,7 @@ prime2:
 ### Task 2
 
 - In this task we want to generate a certificate request for our web server.
-- The command ``openssl req -newkey rsa:2048 -sha256 \ -keyout server.key -out server.csr \ -subj "/CN=www.l10g03.com/O=L10G03 Inc./C=US" \ -passout pass:dees`` generate a CSR for www.l10g03.com.
+- The command ``openssl req -newkey rsa:2048 -sha256 \-keyout server.key -out server.csr \-subj "/CN=www.l10g03.com/O=L10G03 Inc./C=US" \-passout pass:dees`` generate a CSR for www.l10g03.com.
 - The command generate a pair of public/private key, and create a certificate signing request from the public key.
 - We can use the following command to look at the decoded content of the CSR and private key files:
 
@@ -184,12 +184,20 @@ openssl rsa -in server.key -text -noout
 ```
 - To allow a certificate to have multiple names, the X.509 specification defines ``Subject Alternative Name (SAN)`` to be attached to a certificate. - Using the SAN extension, we specify several hostnames in the ``subjectAltName`` field of a certificate.
 - We add that option to the "openssl req" command ``-addext "subjectAltName = DNS:www.l10g03.com,  \DNS:www.l10g032022.com, \DNS:www.l10g03fridaymonday.com"``
-- Getting the command ``openssl req -newkey rsa:2048 -sha256 \ -keyout server.key -out server.csr \ -subj "/CN=www.l10g03.com/O=L10G03 Inc./C=US" \ -passout pass:dees -addext "subjectAltName = DNS:www.l10g03.com,  \DNS:www.l10g032022.com, \DNS:www.l10g03fridaymorning.com``.
+- Getting the command ``openssl req -newkey rsa:2048 -sha256 \-keyout server.key -out server.csr \-subj "/CN=www.l10g03.com/O=L10G03 Inc./C=US" \-passout pass:dees -addext "subjectAltName = DNS:www.l10g03.com,  \DNS:www.l10g032022.com, \DNS:www.l10g03fridaymorning.com"``.
 
 
 ### Task 3
 
--
+- In this task we want to generate a certificate for our server.
+- The default setting in ``openssl.cnf`` does not allow the ``openssl ca`` command to copy the extension field from the request to the final certificate. To enable that, we uncomment the line ``copy_extensions = copy`` of our copy of the configuration file.
+- We use the command ``openssl ca -config myCA_openssl.cnf -policy policy_anything \-md sha256 -days 3650 \-in server.csr -out server.crt -batch \-cert ca.crt -keyfile ca.key `` to turn the certificate signing request (server.csr) into an X509 certificate (server.crt), using the CA’s ca.crt and ca.key.
+- After signing the certificate,  we use the command ``openssl x509 -in server.crt -text -noout`` to print out the decoded content of the certificate, and check whether the alternative names are included:
+
+```
+X509v3 Subject Alternative Name: 
+            DNS:www.l10g03.com, DNS:www.l10g032022.com, DNS:www.l10g03fridaymorning.com
+```
 
 ### Task 4
 
