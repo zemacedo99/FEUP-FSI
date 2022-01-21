@@ -46,6 +46,8 @@ X509v3 extensions:
 
 #### Question 3: In the RSA algorithm, we have a public exponent e, a private exponent d, a modulus n, and two secret numbers p and q, such that n = pq. Please identify the values for these elements in your certificate and key files.
 
+- If we run ``openssl rsa -in ca.key -text -noout`` we can find:
+
 - public exponent: ``65537 (0x10001)``
 
 - private exponent:
@@ -171,7 +173,19 @@ prime2:
 
 ### Task 2
 
-- 
+- In this task we want to generate a certificate request for our web server.
+- The command ``openssl req -newkey rsa:2048 -sha256 \ -keyout server.key -out server.csr \ -subj "/CN=www.l10g03.com/O=L10G03 Inc./C=US" \ -passout pass:dees`` generate a CSR for www.l10g03.com.
+- The command generate a pair of public/private key, and create a certificate signing request from the public key.
+- We can use the following command to look at the decoded content of the CSR and private key files:
+
+```
+openssl req -in server.csr -text -noout
+openssl rsa -in server.key -text -noout
+```
+- To allow a certificate to have multiple names, the X.509 specification defines ``Subject Alternative Name (SAN)`` to be attached to a certificate. - Using the SAN extension, we specify several hostnames in the ``subjectAltName`` field of a certificate.
+- We add that option to the "openssl req" command ``-addext "subjectAltName = DNS:www.l10g03.com,  \DNS:www.l10g032022.com, \DNS:www.l10g03fridaymonday.com"``
+- Getting the command ``openssl req -newkey rsa:2048 -sha256 \ -keyout server.key -out server.csr \ -subj "/CN=www.l10g03.com/O=L10G03 Inc./C=US" \ -passout pass:dees -addext "subjectAltName = DNS:www.l10g03.com,  \DNS:www.l10g032022.com, \DNS:www.l10g03fridaymorning.com``.
+
 
 ### Task 3
 
