@@ -16,7 +16,10 @@
 
 ### Challenge 2
 
-- 
+- We started by analysing the program using ``checksec``. After this, we looked through the program's code in search of a vulnerability.
+- We discovered that it was using ``gets`` to read the input and was storing in the variable ``buffer[100]``. This presented the opportunity to try a buffer overflow attack.
+- Using athe fundamentals behind a buffer overflow attack and some scripts from previous ctfs, we managed to inject our shellcode into the program and open a shell.
+ 
 
 ## SeedLab
 
