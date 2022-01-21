@@ -13,7 +13,7 @@ copy instead.
 - Next we insert a password and the subject information.
 - The output of the command are stored in two files: ca.key and ca.crt. The file ca.key contains the CA’s private key, while ca.crt contains the public-key certificate.
 
-##Question 1: What part of the certificate indicates this is a CA’s certificate?
+#### Question 1: What part of the certificate indicates this is a CA’s certificate?
 
 - If we run ``openssl x509 -in ca.crt -text -noout`` we can find :
 
@@ -24,7 +24,7 @@ X509v3 Basic Constraints: critical
 ```
 
 
-##Question 2: What part of the certificate indicates this is a self-signed certificate?
+#### Question 2: What part of the certificate indicates this is a self-signed certificate?
 
 - If we run ``openssl x509 -in ca.crt -text -noout`` we can find that the issuer and subject fields are the same.
 
@@ -44,7 +44,7 @@ X509v3 extensions:
                 keyid:3A:09:85:9A:D0:19:D6:92:85:15:AF:5B:35:16:E9:F8:90:4A:60:DE
 ```
 
-##Question 3: In the RSA algorithm, we have a public exponent e, a private exponent d, a modulus n, and two secret numbers p and q, such that n = pq. Please identify the values for these elements in your certificate and key files.
+#### Question 3: In the RSA algorithm, we have a public exponent e, a private exponent d, a modulus n, and two secret numbers p and q, such that n = pq. Please identify the values for these elements in your certificate and key files.
 
 - public exponent: ``65537 (0x10001)``
 
