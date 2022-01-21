@@ -3,11 +3,16 @@
 ## CTF
 
 ### Goal
-- 
+
+- The objective is to attack the web application with a Cross-Site Scripting (XSS), in order to allow the administrator to provide a flag.
 
 ### Challenge 1
 
-- 
+- The admin visit the page with our justification and mark the request as not accepted by clicking on button "Mark request as read" or accepted on button "Give the flag".
+
+- The justification has a vulnerability that allows us to input a script that the web app will run, so we input ``<script>document.getElementById('giveflag').click();</script>``.
+
+- This way the button "Give the flag" is clicked when the admin visit the page accepting the request to give the flag.
 
 ### Challenge 2
 
